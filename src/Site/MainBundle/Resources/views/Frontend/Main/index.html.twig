@@ -1,0 +1,17 @@
+{% extends 'SiteMainBundle:Frontend:layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    {{ page.text|raw }}
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}

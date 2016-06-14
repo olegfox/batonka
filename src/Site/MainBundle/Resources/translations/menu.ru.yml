@@ -1,0 +1,85 @@
+backend:
+
+    page:
+        h1_show: Статьи
+        h1_list: Список статей
+        h1_edit: Редактирование статьи
+        h1_create: Создание статьи
+        back_to_list: Назад к списку статей
+        empty_list: Нет статей
+        title: Заголовок
+        metatitle: Мета-заголовок
+        metadescription: Мета-описание
+        metakeywords: Ключевые слова
+        text: Текст статьи
+        slug: url
+        position: Позиция
+        not_found: Статья не существует
+        validation:
+            title: Вы не ввели заголовок!
+            position: Вы не ввели позицию!
+            position_integer: Вы некорректно ввели позицию!
+            position_min: Позициия не может быть меньше нуля!
+
+    menu:
+        h1_show: Меню
+        h1_list: Список пунктов меню
+        h1_edit: Редактирование пункта меню
+        h1_create: Добавление пункта меню
+        back_to_list: Назад к списку пунктов меню
+        empty_list: Нет пунктов меню
+        title: Заголовок
+        parent: Родитель
+        page: Статья
+        position: Позиция
+        not_found: Статья не существует
+
+    slider:
+        h1_show: Слайды
+        h1_list: Список картинок
+        h1_edit: Редактирование слайда
+        h1_create: Добавление слайда
+        back_to_list: Назад к списку картинок
+        empty_list: Нет картинок
+        position: Позиция
+        img: Картинка
+        main: Показывать на главной?
+        not_found: Картинка не существует
+
+    actions: Действия
+    show: показать
+    edit: редактировать
+    update: сохранить
+    create: создать
+    delete: удалить
+
+frontend:
+    register: Перейти к оплате
+    payment:
+      tariff: Тариф
+      numberMonth: Количество месяцев
+      next: Далее
+      back: Назад
+      send: Оплатить
+      error: Ошибка!
+    feedback:
+        placeholder:
+            name: Имя
+            phone: Телефон
+            email: Электронная почта
+            theme: Тема письма
+            message: Сообщение
+    question_form:
+        placeholder:
+            name: Имя
+            email: Электронная почта
+            question: Вопрос
+        button_question: Задать вопрос
+        button_question_send: Отправить
+    change_password_form:
+        current_password: Текущий пароль
+        new_password: Новый пароль
+        new_password_confirmation: Подтвердите пароль
+        password_mismatch: Введенные пароли не совпадают
+
+"Invalid credentials.": Неверные имя пользователя или пароль

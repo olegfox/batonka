@@ -1,0 +1,255 @@
+<?php
+
+namespace Site\MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
+/**
+ * Page
+ *
+ * @ORM\Table(name="couch")
+ * @ORM\Entity(repositoryClass="Site\MainBundle\Entity\Repository\CouchRepository")
+ */
+class Couch
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="link", type="string", length=255, nullable=true)
+     */
+    private $link;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $photo;
+
+    /**
+     * @Assert\File()
+     */
+    private $file;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Training", mappedBy="couch", cascade={"persist", "remove"})
+     **/
+    private $trainings;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->trainings = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function getAbsolutePath()
+    {
+        return null === $this->photo
+            ? null
+            : $this->getUploadRootDir().'/'.$this->photo;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->photo
+            ? null
+            : $this->getUploadDir().'/'.$this->photo;
+    }
+
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../../../../../'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        return 'uploads/couch';
+    }
+
+    /**
+     * Sets file.
+     *
+     * @param UploadedFile $file
+     */
+    public function setFile(UploadedFile $file = null)
+    {
+        $this->file = $file;
+
+        $this->upload();
+    }
+
+    /**
+     * Get file.
+     *
+     * @return UploadedFile
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    public function upload()
+    {
+        if (null === $this->getFile()) {
+            return;
+        }
+
+        if (isset($this->photo)) {
+            if(file_exists($this->getUploadDir().'/'.$this->photo)){
+                unlink($this->getUploadDir().'/'.$this->photo);
+            }
+            $this->photo = null;
+        }
+
+        $this->photo = $this->getFile()->getClientOriginalName();
+
+        $this->getFile()->move(
+            $this->getUploadDir(),
+            $this->photo
+        );
+
+        $this->file = null;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Couch
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Add trainings
+     *
+     * @param \Site\MainBundle\Entity\Training $trainings
+     * @return Couch
+     */
+    public function addTraining(\Site\MainBundle\Entity\Training $trainings)
+    {
+        $this->trainings[] = $trainings;
+
+        return $this;
+    }
+
+    /**
+     * Remove trainings
+     *
+     * @param \Site\MainBundle\Entity\Training $trainings
+     */
+    public function removeTraining(\Site\MainBundle\Entity\Training $trainings)
+    {
+        $this->trainings->removeElement($trainings);
+    }
+
+    /**
+     * Get trainings
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTrainings()
+    {
+        return $this->trainings;
+    }
+
+    /**
+     * Set photo
+     *
+     * @param string $photo
+     * @return Couch
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+    /**
+     * Get photo
+     *
+     * @return string 
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
+     * Set link
+     *
+     * @param string $link
+     * @return Couch
+     */
+    public function setLink($link)
+    {
+        $this->link = $link;
+
+        return $this;
+    }
+
+    /**
+     * Get link
+     *
+     * @return string 
+     */
+    public function getLink()
+    {
+        return $this->link;
+    }
+
+    public function __toString() {
+        return $this->name;
+    }
+}

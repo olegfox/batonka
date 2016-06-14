@@ -1,0 +1,234 @@
+<?php
+
+namespace Site\MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * Page
+ *
+ * @ORM\Table(name="training")
+ * @ORM\Entity(repositoryClass="Site\MainBundle\Entity\Repository\TrainingRepository")
+ */
+class Training
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="day", type="integer", nullable=false)
+     */
+    private $day;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="time", type="datetime", nullable=false)
+     */
+    private $time;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="duration", type="integer", nullable=true)
+     */
+    private $duration;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Grup", inversedBy="trainings")
+     * @ORM\JoinColumn(name="grup_id", referencedColumnName="id")
+     **/
+    private $grup;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Couch", inversedBy="trainings")
+     * @ORM\JoinColumn(name="couch_id", referencedColumnName="id")
+     **/
+    private $couch;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="TypeTraining", inversedBy="trainings")
+     * @ORM\JoinColumn(name="type_training_id", referencedColumnName="id")
+     **/
+    private $typeTraining;
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set duration
+     *
+     * @param \DateTime $duration
+     * @return Training
+     */
+    public function setDuration($duration)
+    {
+        $this->duration = $duration;
+
+        return $this;
+    }
+
+    /**
+     * Get duration
+     *
+     * @return \DateTime
+     */
+    public function getDuration()
+    {
+        return $this->duration;
+    }
+
+    /**
+     * Set grup
+     *
+     * @param \Site\MainBundle\Entity\Grup $grup
+     * @return Training
+     */
+    public function setGrup(\Site\MainBundle\Entity\Grup $grup = null)
+    {
+        $this->grup = $grup;
+
+        return $this;
+    }
+
+    /**
+     * Get grup
+     *
+     * @return \Site\MainBundle\Entity\Grup
+     */
+    public function getGrup()
+    {
+        return $this->grup;
+    }
+
+    /**
+     * Set couch
+     *
+     * @param \Site\MainBundle\Entity\Couch $couch
+     * @return Training
+     */
+    public function setCouch(\Site\MainBundle\Entity\Couch $couch = null)
+    {
+        $this->couch = $couch;
+
+        return $this;
+    }
+
+    /**
+     * Get couch
+     *
+     * @return \Site\MainBundle\Entity\Couch
+     */
+    public function getCouch()
+    {
+        return $this->couch;
+    }
+
+    /**
+     * Set typeTraining
+     *
+     * @param \Site\MainBundle\Entity\TypeTraining $typeTraining
+     * @return Training
+     */
+    public function setTypeTraining(\Site\MainBundle\Entity\TypeTraining $typeTraining = null)
+    {
+        $this->typeTraining = $typeTraining;
+
+        return $this;
+    }
+
+    /**
+     * Get typeTraining
+     *
+     * @return \Site\MainBundle\Entity\TypeTraining
+     */
+    public function getTypeTraining()
+    {
+        return $this->typeTraining;
+    }
+
+    /**
+     * Set day
+     *
+     * @param integer $day
+     * @return Training
+     */
+    public function setDay($day)
+    {
+        $this->day = $day;
+
+        return $this;
+    }
+
+    /**
+     * Get day
+     *
+     * @return integer
+     */
+    public function getDay()
+    {
+        return $this->day;
+    }
+
+    /**
+     * Set time
+     *
+     * @param \DateTime $time
+     * @return Training
+     */
+    public function setTime($time)
+    {
+        $this->time = $time;
+
+        return $this;
+    }
+
+    /**
+     * Get time
+     *
+     * @return \DateTime
+     */
+    public function getTime()
+    {
+        return $this->time;
+    }
+
+    public function getDayText()
+    {
+        $days = array(
+            0 => 'Понедельник',
+            1 => 'Вторник',
+            2 => 'Среда',
+            3 => 'Четверг',
+            4 => 'Пятница',
+            5 => 'Суббота',
+            6 => 'Воскресенье'
+        );
+
+        return $days[$this->day];
+    }
+}

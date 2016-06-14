@@ -1,0 +1,36 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+    {% stylesheets 'bundles/sitemain/frontend/css/style.css' filter='yui_css' %}
+        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block body %}
+    <header>
+        <div class="social"></div>
+        <div class="slide"></div>
+        {{ knp_menu_render('SiteMainBundle:FrontendMenuBuilder:mainMenu', { 'style': 'navbar' }) }}
+    </header>
+
+    <section class="content">
+        <div class="text">
+            <div class="inner-text">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+        <div class="sidebar">
+            {% block sidebar %}
+            {% endblock %}
+        </div>
+    </section>
+
+    <footer>
+
+    </footer>
+{% endblock %}
+
+{% block head %}
+
+{% endblock %}

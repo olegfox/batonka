@@ -1,0 +1,15 @@
+backend_dashboard:
+    path:     /
+    defaults: { _controller: "SiteMainBundle:Backend/Dashboard:index" }
+
+backend_page:
+    resource: "@SiteMainBundle/Resources/config/routing/backend/page.yml"
+    prefix:   /page
+
+backend_slider:
+    resource: "@SiteMainBundle/Resources/config/routing/backend/slider.yml"
+    prefix:   /slider
+
+backend_menu:
+    resource: "@SiteMainBundle/Resources/config/routing/backend/menu.yml"
+    prefix:   /menu

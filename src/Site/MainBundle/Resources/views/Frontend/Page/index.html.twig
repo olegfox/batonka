@@ -1,0 +1,21 @@
+{% extends 'SiteMainBundle:Frontend:layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    {{ page.text|raw }}
+{% endblock %}
+
+{% block sidebar %}
+    {{ knp_menu_render('SiteMainBundle:FrontendMenuBuilder:sidebarMenu', { 'style': 'navbar' }) }}
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}

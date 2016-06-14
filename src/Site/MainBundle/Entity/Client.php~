@@ -1,0 +1,401 @@
+<?php
+
+namespace Site\MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+
+/**
+ * Page
+ *
+ * @ORM\Table(name="clients")
+ * @ORM\Entity(repositoryClass="Site\MainBundle\Entity\Repository\ClientRepository")
+ */
+class Client
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * Фио
+     *
+     * @var string
+     *
+     * @ORM\Column(name="fio", type="string", length=255, nullable=false)
+     */
+    private $fio;
+
+    /**
+     * Компания
+     *
+     * @var string
+     *
+     * @ORM\Column(name="company", type="string", length=255, nullable=false)
+     */
+    private $company;
+
+    /**
+     * Email
+     *
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255, nullable=false)
+     */
+    private $email;
+
+    /**
+     * Отель
+     *
+     * @ORM\ManyToOne(targetEntity="Hotel", inversedBy="clients")
+     * @ORM\JoinColumn(name="hotel_id", referencedColumnName="id")
+     **/
+    protected $hotel;
+
+    /**
+     * Класс номера
+     *
+     * @ORM\ManyToOne(targetEntity="ClassRoom", inversedBy="clients")
+     * @ORM\JoinColumn(name="class_room_id", referencedColumnName="id")
+     **/
+    protected $classRoom;
+
+    /**
+     * Нужно ли вас встретить
+     *
+     * @var boolean
+     *
+     * @ORM\Column(name="meet", type="boolean", nullable=true)
+     */
+    protected $meet;
+
+    /**
+     * Транспорт
+     *
+     * @var boolean
+     *
+     * @ORM\Column(name="transport", type="boolean", nullable=true)
+     */
+    protected $transport;
+
+    /**
+     * Вокзал
+     *
+     * @ORM\ManyToOne(targetEntity="Stations", inversedBy="clients")
+     * @ORM\JoinColumn(name="station_id", referencedColumnName="id")
+     **/
+    protected $station;
+
+    /**
+     * Время прибытия
+     *
+     * @var boolean
+     *
+     * @ORM\Column(name="time", type="datetime", nullable=true)
+     */
+    protected $time;
+
+    /**
+     * День, на который регистрируются
+     *
+     * @var boolean
+     *
+     * @ORM\Column(name="registerDate", type="boolean", nullable=true)
+     */
+    protected $registerDate;
+
+    /**
+     * С кем из сотрудников компании «Ракурс» вы бы хотели пообщаться в ходе конференции
+     *
+     * @var string
+     *
+     * @ORM\Column(name="friends", type="string", length=1024, nullable=true)
+     */
+    private $friends;
+
+    /**
+     * Флаг отправки письма за 2 недели
+     *
+     * @var boolean
+     *
+     * @ORM\Column(name="flagRemember2", type="boolean", nullable=true)
+     */
+    protected $flagRemember2;
+
+    /**
+     * Флаг отправки письма за 1 неделю
+     *
+     * @var boolean
+     *
+     * @ORM\Column(name="flagRemember", type="boolean", nullable=true)
+     */
+    protected $flagRemember;
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set fio
+     *
+     * @param string $fio
+     * @return Client
+     */
+    public function setFio($fio)
+    {
+        $this->fio = $fio;
+
+        return $this;
+    }
+
+    /**
+     * Get fio
+     *
+     * @return string 
+     */
+    public function getFio()
+    {
+        return $this->fio;
+    }
+
+    /**
+     * Set company
+     *
+     * @param string $company
+     * @return Client
+     */
+    public function setCompany($company)
+    {
+        $this->company = $company;
+
+        return $this;
+    }
+
+    /**
+     * Get company
+     *
+     * @return string 
+     */
+    public function getCompany()
+    {
+        return $this->company;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return Client
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set meet
+     *
+     * @param boolean $meet
+     * @return Client
+     */
+    public function setMeet($meet)
+    {
+        $this->meet = $meet;
+
+        return $this;
+    }
+
+    /**
+     * Get meet
+     *
+     * @return boolean 
+     */
+    public function getMeet()
+    {
+        return $this->meet;
+    }
+
+    /**
+     * Set transport
+     *
+     * @param boolean $transport
+     * @return Client
+     */
+    public function setTransport($transport)
+    {
+        $this->transport = $transport;
+
+        return $this;
+    }
+
+    /**
+     * Get transport
+     *
+     * @return boolean 
+     */
+    public function getTransport()
+    {
+        return $this->transport;
+    }
+
+    /**
+     * Set time
+     *
+     * @param \DateTime $time
+     * @return Client
+     */
+    public function setTime($time)
+    {
+        $this->time = $time;
+
+        return $this;
+    }
+
+    /**
+     * Get time
+     *
+     * @return \DateTime 
+     */
+    public function getTime()
+    {
+        return $this->time;
+    }
+
+    /**
+     * Set registerDate
+     *
+     * @param \DateTime $registerDate
+     * @return Client
+     */
+    public function setRegisterDate($registerDate)
+    {
+        $this->registerDate = $registerDate;
+
+        return $this;
+    }
+
+    /**
+     * Get registerDate
+     *
+     * @return \DateTime 
+     */
+    public function getRegisterDate()
+    {
+        return $this->registerDate;
+    }
+
+    /**
+     * Set hotel
+     *
+     * @param \Site\MainBundle\Entity\Hotel $hotel
+     * @return Client
+     */
+    public function setHotel(\Site\MainBundle\Entity\Hotel $hotel = null)
+    {
+        $this->hotel = $hotel;
+
+        return $this;
+    }
+
+    /**
+     * Get hotel
+     *
+     * @return \Site\MainBundle\Entity\Hotel 
+     */
+    public function getHotel()
+    {
+        return $this->hotel;
+    }
+
+    /**
+     * Set classRoom
+     *
+     * @param \Site\MainBundle\Entity\ClassRoom $classRoom
+     * @return Client
+     */
+    public function setClassRoom(\Site\MainBundle\Entity\ClassRoom $classRoom = null)
+    {
+        $this->classRoom = $classRoom;
+
+        return $this;
+    }
+
+    /**
+     * Get classRoom
+     *
+     * @return \Site\MainBundle\Entity\ClassRoom 
+     */
+    public function getClassRoom()
+    {
+        return $this->classRoom;
+    }
+
+    /**
+     * Set station
+     *
+     * @param \Site\MainBundle\Entity\Stations $station
+     * @return Client
+     */
+    public function setStation(\Site\MainBundle\Entity\Stations $station = null)
+    {
+        $this->station = $station;
+
+        return $this;
+    }
+
+    /**
+     * Get station
+     *
+     * @return \Site\MainBundle\Entity\Stations 
+     */
+    public function getStation()
+    {
+        return $this->station;
+    }
+
+    /**
+     * Set friends
+     *
+     * @param string $friends
+     * @return Client
+     */
+    public function setFriends($friends)
+    {
+        $this->friends = $friends;
+
+        return $this;
+    }
+
+    /**
+     * Get friends
+     *
+     * @return string 
+     */
+    public function getFriends()
+    {
+        return $this->friends;
+    }
+}

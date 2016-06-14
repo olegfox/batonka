@@ -1,0 +1,10 @@
+services:
+    twig.extension.intl:
+            class: Twig_Extensions_Extension_Intl
+            tags:
+                - { name: twig.extension }
+    export.excel:
+      class: Site\MainBundle\Service\ClientService
+      arguments:
+          - @service_container
+          - @doctrine.orm.entity_manager

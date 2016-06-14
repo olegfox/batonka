@@ -1,0 +1,12 @@
+
+Site\MainBundle\Entity\Page:
+    properties:
+        title:
+            - NotBlank:
+                message: "Заголовок не может быть пустым"
+
+Site\MainBundle\Entity\Menu:
+    properties:
+        title:
+            - NotBlank:
+                message: "Заголовок не может быть пустым"
