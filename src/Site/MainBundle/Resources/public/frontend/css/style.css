@@ -73,21 +73,26 @@ header .slide {
   background-color: #303d46;
 }
 /* line 11, style.scss */
-header ul.nav {
-  height: 60px;
-  line-height: 66px;
+header .top-menu {
   background-color: #d8d8d8;
   border: 1px solid rgba(150, 150, 150, 0.35);
-  text-align: justify;
-  padding-left: 80px;
 }
-/* line 18, style.scss */
-header ul.nav li {
+/* line 14, style.scss */
+header .top-menu ul.nav {
+  max-width: 1080px;
+  height: 60px;
+  line-height: 66px;
+  text-align: justify;
+  padding: 0 80px;
+  margin: 0 auto;
+}
+/* line 21, style.scss */
+header .top-menu ul.nav li {
   display: inline-block;
   vertical-align: top;
 }
-/* line 21, style.scss */
-header ul.nav li a {
+/* line 24, style.scss */
+header .top-menu ul.nav li a {
   display: inline-block;
   height: 27px;
   color: black;
@@ -98,16 +103,18 @@ header ul.nav li a {
   margin: 0 20px;
   text-decoration: none;
 }
-/* line 32, style.scss */
-header ul.nav li:after {
+/* line 35, style.scss */
+header .top-menu ul.nav li:after {
   width: 100%;
 }
 
-/* line 40, style.scss */
+/* line 45, style.scss */
 section.content {
   font-size: 0;
+  max-width: 1240px;
+  margin: 0 auto;
 }
-/* line 42, style.scss */
+/* line 49, style.scss */
 section.content .text {
   display: inline-block;
   width: 70%;
@@ -118,28 +125,28 @@ section.content .text {
   color: #1a1a1a;
   vertical-align: top;
 }
-/* line 51, style.scss */
+/* line 58, style.scss */
 section.content .text .inner-text {
   padding: 35px 20px 35px 100px;
 }
-/* line 55, style.scss */
+/* line 62, style.scss */
 section.content .sidebar {
   display: inline-block;
   width: 30%;
   vertical-align: top;
   margin-top: 35px;
 }
-/* line 60, style.scss */
+/* line 67, style.scss */
 section.content .sidebar ul {
-  margin-right: 20px;
+  margin-right: 100px;
 }
-/* line 62, style.scss */
+/* line 69, style.scss */
 section.content .sidebar ul li {
   padding-top: 15px;
   padding-bottom: 15px;
   border-bottom: 1px solid #979797;
 }
-/* line 66, style.scss */
+/* line 73, style.scss */
 section.content .sidebar ul li a {
   height: 22px;
   color: black;

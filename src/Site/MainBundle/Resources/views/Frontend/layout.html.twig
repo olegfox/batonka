@@ -10,7 +10,9 @@
     <header>
         <div class="social"></div>
         <div class="slide"></div>
-        {{ knp_menu_render('SiteMainBundle:FrontendMenuBuilder:mainMenu', { 'style': 'navbar' }) }}
+        <div class="top-menu">
+            {{ knp_menu_render('SiteMainBundle:FrontendMenuBuilder:mainMenu', { 'style': 'navbar' }) }}
+        </div>
     </header>
 
     <section class="content">
