@@ -2,10 +2,26 @@
 
 {% block stylesheets %}
     {{ parent() }}
+    {% stylesheets 
+    'bundles/sitemain/frontend/css/slick.css'
+    filter='yui_css' %}
+        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+    {% endstylesheets %}
 {% endblock %}
 
 {% block head %}
     {{ parent() }}
+{% endblock %}
+
+{% block slider %}
+	<section class="slider">
+       <div class="slider">
+            {% for slider in sliders %}
+                <div {% if slider.webPath|length > 0 %}style="background: url('{{ asset(slider.webPath) }}') center center no-repeat; background-size: cover;"{% endif %}>
+                </div>
+            {% endfor %}
+        </div>
+    </section>    
 {% endblock %}
 
 {% block content %}
@@ -13,5 +29,11 @@
 {% endblock %}
 
 {% block javascripts %}
-
+    {{ parent() }}
+    {% javascripts
+    'bundles/sitemain/frontend/js/slick-carousel/slick/slick.min.js' 
+    'bundles/sitemain/frontend/js/script.js'
+    filter='yui_js' %}
+    <script type="text/javascript" src="{{ asset_url }}" id="scripts"></script>
+    {% endjavascripts %}
 {% endblock %}

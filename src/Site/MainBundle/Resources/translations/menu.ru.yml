@@ -44,6 +44,8 @@ backend:
         position: Позиция
         img: Картинка
         main: Показывать на главной?
+        main_yes: Да
+        main_no: Нет
         not_found: Картинка не существует
 
     actions: Действия

@@ -1,7 +1,9 @@
 {% extends "::base.html.twig" %}
 
 {% block stylesheets %}
-    {% stylesheets 'bundles/sitemain/frontend/css/style.css' filter='yui_css' %}
+    {% stylesheets 
+    'bundles/sitemain/frontend/css/style.css'
+    filter='yui_css' %}
         <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
     {% endstylesheets %}
 {% endblock %}
@@ -14,6 +16,9 @@
             {{ knp_menu_render('SiteMainBundle:FrontendMenuBuilder:mainMenu', { 'style': 'navbar' }) }}
         </div>
     </header>
+
+    {% block slider %}
+    {% endblock %}
 
     <section class="content">
         <div class="text">
@@ -34,5 +39,13 @@
 {% endblock %}
 
 {% block head %}
+{% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+    'bundles/sitemain/frontend/js/jquery/dist/jquery.min.js' 
+    filter='yui_js' %}
+    <script type="text/javascript" src="{{ asset_url }}" id="scripts"></script>
+    {% endjavascripts %}
 {% endblock %}

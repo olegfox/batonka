@@ -9,8 +9,10 @@ class MainController extends Controller
     public function indexAction()
     {
         $repository = $this->getDoctrine()->getRepository('SiteMainBundle:Page');
+        $repository_slider = $this->getDoctrine()->getRepository('SiteMainBundle:Slider');
 
         $page = $repository->findOneBySlug('glavnaia');
+        $sliders = $repository_slider->findBy(array('main' => true), array('position' => 'asc'));
 
         if (!$page)
         {
@@ -18,9 +20,10 @@ class MainController extends Controller
         }
 
         $params = array(
-            "page" => $page
+            "page" => $page,
+            "sliders" => $sliders
         );
 
-        return $this->render('SiteMainBundle:Frontend/Page:index.html.twig', $params);
+        return $this->render('SiteMainBundle:Frontend/Main:index.html.twig', $params);
     }
 }

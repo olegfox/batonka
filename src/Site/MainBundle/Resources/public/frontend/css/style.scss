@@ -1,18 +1,30 @@
 @import "compass/reset";
 
+body {
+  font-family: sans-serif, Arial, Verdana, "Trebuchet MS";
+  font-size: 12px;
+}
+
+p {
+  display: block;
+  font-size: 13px;
+  line-height: 1.6; 
+  margin: 1em 0;
+}
+
 header {
   .social {
     height: 42px;
   }
   .slide {
     height: 200px;
-    background-color: #303d46;
+    background: #303d46 url('/bundles/sitemain/frontend/images/temp_header.gif') center center no-repeat; 
   }
   .top-menu {
     background-color: #d8d8d8;
     border: 1px solid rgba(150, 150, 150, 0.35);
     ul.nav {
-      max-width: 1080px;
+      max-width: 1200px;
       height: 60px;
       line-height: 66px;
       text-align: justify;
@@ -20,6 +32,7 @@ header {
       margin: 0 auto;
       li {
         display: inline-block;
+        height: 60px;
         vertical-align: top;
         a {
           display: inline-block;
@@ -32,9 +45,11 @@ header {
           margin: 0 20px;
           text-decoration: none;
         }
-        &:after {
-          width: 100%;
-        }
+      } 
+      &:after {
+        display: inline-block;
+        content: '';
+        width: 100%;
       }
     }
   }
@@ -44,7 +59,7 @@ header {
 section {
   &.content {
     font-size: 0;
-    max-width: 1240px;
+    max-width: 1360px;
     margin: 0 auto;
     .text {
       display: inline-block;
@@ -82,5 +97,9 @@ section {
         }
       }
     }
+  }
+
+  &.slider {
+    height: 450px;
   }
 }
