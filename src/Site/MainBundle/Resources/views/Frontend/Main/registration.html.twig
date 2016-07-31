@@ -1,0 +1,25 @@
+{% extends 'SiteMainBundle:Frontend:layout.html.twig' %}
+
+{% block html %}ng-app="registration"{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <div class="col-sm-7 col-md-4 form-body" ng-controller="RegistrationController">
+    {{ form_start(form, { attr: {novalidate: 'novalidate', 'ng-submit': 'submit()', 'onsubmit': 'return false;'} }) }}
+    {{ form_row(form.fio) }}
+    {{ form_row(form.company) }}
+    {{ form_row(form.email) }}
+
+    {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/sitemain/frontend/js/angular.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/sitemain/frontend/js/jquery.simplemodal.1.4.4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/sitemain/frontend/js/registration.js') }}"></script>
+{% endblock %}

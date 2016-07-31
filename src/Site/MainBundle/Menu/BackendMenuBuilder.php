@@ -16,6 +16,8 @@ class BackendMenuBuilder extends ContainerAware
         $menu->addChild('Меню', array('route' => 'backend_menu_index'));
         $menu->addChild('Статьи', array('route' => 'backend_page_index'));
         $menu->addChild('Слайдер', array('route' => 'backend_slider_index'));
+        $menu->addChild('Фото', array('route' => 'backend_photo_index'));
+        $menu->addChild('Регистрации', array('route' => 'backend_client_index'));
 
         return $menu;
     }

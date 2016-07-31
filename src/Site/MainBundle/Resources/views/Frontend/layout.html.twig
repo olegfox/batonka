@@ -2,6 +2,7 @@
 
 {% block stylesheets %}
     {% stylesheets 
+    'bundles/sitemain/backend/js/ckeditor/contents.css'
     'bundles/sitemain/frontend/css/style.css'
     filter='yui_css' %}
         <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
@@ -10,10 +11,22 @@
 
 {% block body %}
     <header>
-        <div class="social"></div>
-        <div class="slide"></div>
+        <div class="social">
+            <div class="social--inner">
+                <a href="#" id="instagramm">instagramm</a>
+                <a href="#" id="linkedin">linkedin</a>
+                <div class="logo"></div>    
+            </div>
+        </div>
+        <div class="slide">
+            <div class="slide--inner">
+                <div class="info"></div>
+            </div>
+        </div>
         <div class="top-menu">
-            {{ knp_menu_render('SiteMainBundle:FrontendMenuBuilder:mainMenu', { 'style': 'navbar' }) }}
+            <div class="top-menu--inner">
+                {{ knp_menu_render('SiteMainBundle:FrontendMenuBuilder:mainMenu', { 'style': 'navbar' }) }}
+            </div>
         </div>
     </header>
 

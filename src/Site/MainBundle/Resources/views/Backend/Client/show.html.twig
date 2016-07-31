@@ -1,0 +1,70 @@
+{% extends 'SiteMainBundle:Backend:layout.html.twig' %}
+
+{% block content -%}
+    <h1>{{ 'backend.client.h1_show'|trans({}, 'menu') }}</h1>
+
+    {{ form(delete_form) }}
+
+    <table class="record_properties table table-striped table-bordered">
+        <tbody>
+        <tr>
+            <th>{{ 'backend.client.fio'|trans({}, 'menu') }}</th>
+            <td>{{ entity.fio }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.client.company'|trans({}, 'menu') }}</th>
+            <td>{{ entity.company }}</td>
+        </tr>  
+        <tr>
+            <th>{{ 'backend.client.email'|trans({}, 'menu') }}</th>
+            <td>{{ entity.email }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.client.hotel'|trans({}, 'menu') }}</th>
+            <td>{{ entity.hotel }}</td>
+        </tr>  
+        <tr>
+            <th>{{ 'backend.client.classRoom'|trans({}, 'menu') }}</th>
+            <td>{{ entity.classRoom }}</td>
+        </tr> 
+        <tr>
+            <th>{{ 'backend.client.meet'|trans({}, 'menu') }}</th>
+            <td>{% if entity.meet == 1 %}Да{% else %}Нет{% endif %}</td>
+        </tr>   
+        <tr>
+            <th>{{ 'backend.client.transport'|trans({}, 'menu') }}</th>
+            <td>{% if entity.transport == 1 %}Поезд{% else %}Самолет{% endif %}</td>
+        </tr>   
+        <tr>
+            <th>{{ 'backend.client.time'|trans({}, 'menu') }}</th>
+            <td>{% if entity.time|length > 0 %}{{ entity.time|date('H:i') }}{% endif %}</td>
+        </tr>    
+        <tr>
+            <th>{{ 'backend.client.station'|trans({}, 'menu') }}</th>
+            <td>{{ entity.station }}</td>
+        </tr> 
+        <tr>
+            <th>{{ 'backend.client.friends'|trans({}, 'menu') }}</th>
+            <td>{{ entity.friends }}</td>
+        </tr>                                                                 
+        </tbody>
+    </table>
+
+    <ul class="record_actions nav nav-pills">
+        <li>
+            <a href="{{ path('backend_client_index') }}">
+                {{ 'backend.client.back_to_list'|trans({}, 'menu') }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('backend_client_edit', { 'id': entity.id }) }}">
+                {{ 'backend.edit'|trans({}, 'menu') }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('backend_client_new') }}">
+                {{ 'backend.create'|trans({}, 'menu') }}
+            </a>
+        </li>
+    </ul>
+{% endblock %}

@@ -5,3 +5,7 @@ frontend_homepage:
 frontend_page:
     resource: "@SiteMainBundle/Resources/config/routing/frontend/page.yml"
     prefix:   /page
+
+frontend_register:
+    resource: "@SiteMainBundle/Resources/config/routing/frontend/register.yml"
+    prefix:   /register    

@@ -48,12 +48,45 @@ backend:
         main_no: Нет
         not_found: Картинка не существует
 
+    photo:
+        h1_show: Фотография
+        h1_list: Список фотографий
+        h1_edit: Редактирование фотографии
+        h1_create: Добавление фотографии
+        h1_create_group: Групповое добавление фотографий
+        back_to_list: Назад к списку фотографий
+        empty_list: Нет фотографий
+        title: Заголовок
+        metatitle: Мета-заголовок
+        metadescription: Мета-описание
+        metakeywords: Ключевые слова
+        position: Позиция
+        img: Изображение
+        created: Дата и время создания
+        photos: Фотографии
+        description: Описание
+        not_found: Фотография не существует        
+
+    client:
+        h1_show: Регистрация
+        h1_list: Список регистраций
+        h1_edit: Редактирование
+        h1_create: Добавление
+        back_to_list: Назад к списку
+        empty_list: Пусто
+        fio: ФИО
+        company: Компания
+        email: Email
+        export: Экспорт в excel
+        not_found: Нет такой регистрации
+
     actions: Действия
     show: показать
     edit: редактировать
     update: сохранить
     create: создать
     delete: удалить
+    create_group: Групповая загрузка
 
 frontend:
     register: Перейти к оплате

@@ -13,3 +13,11 @@ backend_slider:
 backend_menu:
     resource: "@SiteMainBundle/Resources/config/routing/backend/menu.yml"
     prefix:   /menu
+
+backend_photo:
+    resource: "@SiteMainBundle/Resources/config/routing/backend/photo.yml"
+    prefix:   /photo    
+
+backend_client:
+    resource: "@SiteMainBundle/Resources/config/routing/backend/client.yml"
+    prefix:   /client      
